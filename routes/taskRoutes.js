@@ -7,17 +7,20 @@ const {
   updateTask,
   deleteTask,
 } = require("../controllers/taskController");
-const protect = require("../middlewares/authMiddleware");
 
-router.use(protect); 
+const protect = require("../middlewares/authMiddleware");
+const validate = require("../middlewares/validateMiddleware");
+const { taskValidator } = require("../validators/taskValidator");
+
+router.use(protect);
 
 router.route("/")
-  .post(createTask)
+  .post(taskValidator, validate, createTask)
   .get(getTasks);
 
 router.route("/:id")
   .get(getTaskById)
-  .put(updateTask)
+  .put(taskValidator, validate, updateTask)
   .delete(deleteTask);
 
 module.exports = router;
