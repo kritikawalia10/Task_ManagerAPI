@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 const {
   createTask,
   getTasks,
@@ -8,17 +9,15 @@ const {
 } = require("../controllers/taskController");
 const protect = require("../middlewares/authMiddleware");
 
-const router = express.Router();
-
-router.use(protect); // All routes below are protected
+router.use(protect); 
 
 router.route("/")
-  .post(createTask)     // Create
-  .get(getTasks);       // Read all
+  .post(createTask)
+  .get(getTasks);
 
 router.route("/:id")
-  .get(getTaskById)     // Read one
-  .put(updateTask)      // Update
-  .delete(deleteTask);  // Delete
+  .get(getTaskById)
+  .put(updateTask)
+  .delete(deleteTask);
 
 module.exports = router;
