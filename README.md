@@ -37,3 +37,23 @@ This project is structured following the **MVC pattern** and is designed to be p
 
 
 ## deployed link : https://task-managerapi-1.onrender.com/
+
+
+
+# 📬 API Endpoints
+## 👤 Auth Routes (/api/auth)
+Method	Endpoint	Description	Auth Required
+POST	/register	Register new user	❌
+POST	/login	Login existing user	❌
+
+## ✅ Task Routes (/api/tasks) – Protected
+Method	Endpoint	Description
+GET	/api/tasks	Get all tasks for logged-in user
+POST	/api/tasks	Create a task
+GET	/api/tasks/:id	Get single task by ID
+PUT	/api/tasks/:id	Update task by ID
+DELETE	/api/tasks/:id	Delete task by ID
+
+## 🧪 Testing Tasks with Token
+Send Authorization: Bearer <your_token> in headers after login.
+
